@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 //Arrow style
 const baz = ()=> console.log("my name is baz!")
 const bar = ()=> console.log("my name is bar!")
@@ -21,5 +23,21 @@ foo()
 //setTimeout(baz,0)
 //console.log("2")
 //console.log("3")
+
+// const port = 5000
+// const readHelloWorld = (error,data)=>{
+//     if(error){
+//         console.log('Da co loi!' + error)
+//     }else{
+//         console.log("Read file succesfully!")
+//         console.log(data)
+//     }
+// }
+// fs.readFile('hello222222.txt','utf-8',readHelloWorld)
+
+//Synchronous way
+const data = fs.readFileSync('hello.txt','utf-8')
+console.log(data)
+
 
 
