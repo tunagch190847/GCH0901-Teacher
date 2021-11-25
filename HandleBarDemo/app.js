@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 
+app.use(express.static('public'));
+
+
 app.set('view engine','hbs')
 app.use(express.urlencoded({extended:true}))
 
@@ -19,8 +22,6 @@ app.get('/', (req,res)=>{
 app.get('/intro',(req,res)=>{
     res.render('enterInfo')
 })
-
-
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT)
