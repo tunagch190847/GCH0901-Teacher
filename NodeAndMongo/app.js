@@ -16,6 +16,14 @@ app.get('/insert',(req,res)=>{
     res.render('product')
 })
 
+app.get('/delete',async (req,res)=>{
+    const id = req.query.id
+    console.log("id can xoa:"+ id)
+    const dbo = await getDatabase()
+    await dbo.collection("Products").deleteOne({_id:ObjectId(id)})
+    res.redirect('/view')
+})
+
 app.get('/view',async (req,res)=>{
     //1. lay du lieu tu Mongo
     const dbo = await getDatabase()
