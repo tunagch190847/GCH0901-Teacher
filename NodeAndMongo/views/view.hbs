@@ -11,7 +11,7 @@
     <ul>
         {{#each products}}
             <li>{{name}} - {{price}}
-                <img src="{{picURL}}" width="150" height="100"/>
+                <a href="/edit?id={{_id}}"> <img src="{{picURL}}" width="150" height="100"/> </a>
                 <a onclick="return confirm('Are you sure????')" href="/delete?id={{_id}}">Delete</a>
             </li>
         {{/each}}

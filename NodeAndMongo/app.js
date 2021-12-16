@@ -8,6 +8,27 @@ const DATABASE_NAME = 'GCH0901_DB'
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 
+app.post('/edit',async (req,res)=>{
+    const nameInput = req.body.txtName
+    const priceInput = req.body.txtPrice
+    const picURLInput = req.body.txtPicURL
+    const id = req.body.txtId
+    
+    const myquery = { _id: ObjectId(id) }
+    const newvalues = { $set: {name: nameInput, price: priceInput,picURL:picURLInput } }
+    const dbo = await getDatabase()
+    await dbo.collection("Products").updateOne(myquery,newvalues)
+    res.redirect('/view')
+})
+
+app.get('/edit',async (req,res)=>{
+    const id = req.query.id
+    //truy cap database lay product co id o tren
+    const dbo = await getDatabase()
+    const productToEdit = await dbo.collection("Products").findOne({_id:ObjectId(id)})
+    res.render('edit',{product:productToEdit})
+})
+
 app.get('/',(req,res)=>{
     res.render('index')
 })
