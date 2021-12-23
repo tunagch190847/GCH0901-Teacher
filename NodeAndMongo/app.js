@@ -22,6 +22,7 @@ app.post('/edit',async (req,res)=>{
     const collectionName = "Products"
     await updateCollection(collectionName, myquery, newvalues)
     res.redirect('/view')
+    //sssss
 })
 
 app.get('/edit',async (req,res)=>{
